@@ -17,7 +17,7 @@ const Questions = () => {
           questions ? 
           questions.map(question => 
             <Question0
-            id={question.question_id}
+            id={question.id}
             title={question.title}
             user={question.user_id}
             date={question.date}
