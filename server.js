@@ -79,7 +79,7 @@ app.patch('/api/answers/:answer_id', async (req, res) => {
     res.json()
 });
 
-app.delete('/api/answer/:answer_id', async (req, res) => {
+app.delete('/api/answers/:answer_id', async (req, res) => {
     fetch(`http://localhost:${DB_PORT}/answers/${req.params.answer_id}`, {
         method: 'DELETE',
         headers: {
