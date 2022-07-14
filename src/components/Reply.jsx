@@ -5,7 +5,7 @@ const Reply = ({ question_id }) => {
 
     const navigate = useNavigate();
 
-    const addAnswer = (e) => {
+    const addAnswer = e => {
         e.preventDefault();
         const newAnswer = {
             id: uuid(),
@@ -31,14 +31,14 @@ const Reply = ({ question_id }) => {
       <div>
         <h3>Atsakyti į klausimą</h3>
         <form onSubmit={addAnswer}>
-        <textarea
-            name="text"
-            placeholder="Atsakykite į klausimą"
-            />
-            <input
-            type="submit"
-            value="Atsakyti"
-            />
+          <textarea
+          name="text"
+          placeholder="Atsakykite į klausimą"
+          />
+          <input
+          type="submit"
+          value="Atsakyti"
+          />
         </form>
       </div>
     );
