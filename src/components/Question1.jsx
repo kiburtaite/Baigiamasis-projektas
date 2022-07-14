@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import EditQuestion from './EditQuestion';
 import Reply from './Reply';
 
-const Question1 = ( {id, title, user, date, text } ) => {
+const Question1 = ( {id, title, user, date, text, edited } ) => {
 
   const navigate = useNavigate();
   
@@ -26,6 +26,7 @@ const Question1 = ( {id, title, user, date, text } ) => {
       <h4>{user}</h4>
       <h4>{date}</h4>
       <p>{text}</p>
+      {edited ? <h6>edited</h6> : null}
       <button onClick={() => setShowEdit(true)}>Redaguoti klausimą</button>
       <button onClick={() => {deleteQuestion(id)}}>Ištrinti klausimą</button>
       <button onClick={() => setShowReply(true)}>Atsakyti į klausimą</button>

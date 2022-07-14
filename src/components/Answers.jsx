@@ -32,6 +32,7 @@ const Answers = () => {
             user={question.user_id}
             date={question.date}
             text={question.text}
+            edited={question.edited}
             />
             : <p>Loading...</p>
           }
@@ -45,6 +46,7 @@ const Answers = () => {
             user={answer.user_id}
             date={answer.date}
             text={answer.text}
+            edited={answer.edited}
             />)
           : <p>Loading...</p>
         }
