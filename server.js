@@ -50,6 +50,12 @@ app.delete('/api/questions/:question_id', async (req, res) => {
     res.json()
 });
 
+app.get('/api/answers', async (req, res) => {
+    const answers = await fetch(`http://localhost:${DB_PORT}/answers`)
+        .then(answers => answers.json());
+    res.json(answers) 
+});
+
 app.get('/api/questions/:question_id/answers', async (req, res) => {
     const allAnswers = await fetch(`http://localhost:${DB_PORT}/answers`)
         .then(allAnswers => allAnswers.json());
