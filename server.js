@@ -4,6 +4,7 @@ import cors from 'cors';
 import fetch from 'node-fetch';
 import { v4 as uuid } from 'uuid';
 import bcrypt from 'bcrypt';
+import jwt from 'jsonwebtoken';
 
 const app = express();
 const BACK_PORT = process.env.BACK_PORT;
@@ -36,6 +37,21 @@ app.post('/register', async (req, res) => {
             }),
         res.json()
     }
+});
+
+app.post('/login', async (req, res) => {
+    const allUsers = await fetch(`http://localhost:${DB_PORT}/users`)
+    .then(data => data.json());
+    const loginUser = allUsers.find(user => user.email === req.body.email);
+    if (await bcrypt.compare(req.body.password, loginUser.password)){
+        const token = jwt.sign({
+            "user_id": loginUser.id
+        }, process.env.KEY);
+        return res.cookie('token', token, {
+            httpOnly: true
+        })
+        .status(200).send()
+    } else res.status(401).send()
 });
 
 app.get('/api/questions', async (req, res) => {
