@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
-import Question0 from './Question0';
+import Caption from './Caption';
 
-const Questions = () => {
+const Front = () => {
 
   const [unfiltered, setUnfiltered] = useState([]);
   const [questions, setQuestions] = useState([]);
@@ -9,13 +9,13 @@ const Questions = () => {
   const [order, setOrder] = useState(0);
   
   useEffect(() => {
-    fetch('http://localhost:5000/api/questions')
+    fetch('http://localhost:5000/posts/questions')
       .then(res => res.json()
       .then(data => {
         setUnfiltered(data);
         setQuestions(data)
       }));
-    fetch(`http://localhost:5000/api/answers`)
+    fetch(`http://localhost:5000/posts/answers`)
       .then(res => res.json()
       .then(data => setAnswers(data)))
   }, []);
@@ -60,7 +60,7 @@ const Questions = () => {
           questions ? 
           questions.sort(order ? dateDesc : dateAsc)
           .map(question => 
-            <Question0
+            <Caption
             id={question.id}
             title={question.title}
             user={question.user_id}
@@ -74,4 +74,4 @@ const Questions = () => {
   );
 }
   
-export default Questions
+export default Front

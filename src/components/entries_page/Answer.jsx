@@ -6,7 +6,7 @@ const Answer = ( {id, user, date, text, edited} ) => {
   const [showEdit, setShowEdit] = useState(false);
 
   const deleteAnswer = (id) => {
-    fetch(`http://localhost:5000/api/answers/${id}`, {
+    fetch(`http://localhost:5000/posts/answers/${id}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json'

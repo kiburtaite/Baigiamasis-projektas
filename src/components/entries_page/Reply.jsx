@@ -17,14 +17,14 @@ const Reply = ({ question_id }) => {
             likes: 0,
             dislikes: 0
         };
-        fetch(`http://localhost:5000/api/questions/${question_id}/answers`, {
+        fetch(`http://localhost:5000/posts/questions/${question_id}/answers`, {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body : JSON.stringify(newAnswer)
       })
-        .then(navigate(`/questions/${question_id}`))
+        .then(navigate(`/question/${question_id}`))
     };
 
     return (

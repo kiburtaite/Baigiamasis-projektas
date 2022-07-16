@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import EditQuestion from './EditQuestion';
 import Reply from './Reply';
 
-const Question1 = ( {id, title, user, date, text, edited } ) => {
+const Question = ( {id, title, user, date, text, edited } ) => {
 
   const navigate = useNavigate();
   
@@ -11,7 +11,7 @@ const Question1 = ( {id, title, user, date, text, edited } ) => {
   const [showReply, setShowReply] = useState(false);
 
   const deleteQuestion = (id) => {
-    fetch(`http://localhost:5000/api/questions/${id}`, {
+    fetch(`http://localhost:5000/posts/questions/${id}`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json'
@@ -36,4 +36,4 @@ const Question1 = ( {id, title, user, date, text, edited } ) => {
   );
 }
   
-export default Question1
+export default Question

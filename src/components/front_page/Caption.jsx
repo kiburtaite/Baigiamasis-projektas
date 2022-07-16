@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom';
 
-const Question0 = ( {id, title, user, date, answers} ) => {
+const Caption = ( {id, title, user, date, answers} ) => {
   return (
     <div key={id}>
-      <Link to={`/questions/${id}`}><h3>{title}</h3></Link>
+      <Link to={`/question/${id}`}><h3>{title}</h3></Link>
       <h4>{user}</h4>
       <h4>{date}</h4>
       <p>{answers} atsakymai</p>
@@ -11,4 +11,4 @@ const Question0 = ( {id, title, user, date, answers} ) => {
   );
 }
 
-export default Question0
+export default Caption

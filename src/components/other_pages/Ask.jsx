@@ -15,7 +15,7 @@ const Ask = () => {
             text: e.target.elements.text.value,
             edited: false
         };
-        fetch('http://localhost:5000/api/questions', {
+        fetch('http://localhost:5000/posts/questions', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'

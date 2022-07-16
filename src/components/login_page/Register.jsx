@@ -16,7 +16,7 @@ const Register = () => {
                 email: e.target.elements.email.value,
                 password: e.target.elements.password.value
             };
-            fetch('http://localhost:5000/register', {
+            fetch('http://localhost:5000/users/register', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'

@@ -1,4 +1,8 @@
+import { useNavigate } from 'react-router-dom';
+
 const Login = () => {
+
+    const navigate = useNavigate();
 
     const loginUser = e => {
         e.preventDefault();
@@ -6,7 +10,7 @@ const Login = () => {
             email: e.target.elements.email.value,
             password: e.target.elements.password.value 
         };
-        fetch('http://localhost:5000/login', {
+        fetch('http://localhost:5000/users/login', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -15,7 +19,8 @@ const Login = () => {
             })
         .then(res => {
             if (res.ok){
-                alert("Sėkmingai prisijungėte")
+                alert("Sėkmingai prisijungėte");
+                navigate('/')
             } else if (res.status === 401){
                 alert("Klaidingas vartotojo vardas arba slaptažodis")
             }

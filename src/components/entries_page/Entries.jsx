@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
-import Question1 from './Question1';
+import Question from './Question';
 import Answer from './Answer';
 
-const Answers = () => {
+const Entries = () => {
 
     const { page_id } = useParams();
 
@@ -11,12 +11,12 @@ const Answers = () => {
     const [answers, setAnswers] = useState([]);
 
     useEffect(() => {
-      fetch(`http://localhost:5000/api/questions`)
+      fetch(`http://localhost:5000/posts/questions`)
         .then(res => res.json()
         .then(data => data.find(entry => entry.id === page_id))
         .then(data => setQuestion(data))
       );
-      fetch(`http://localhost:5000/api/questions/${page_id}/answers`)
+      fetch(`http://localhost:5000/posts/questions/${page_id}/answers`)
         .then(res => res.json()
         .then(data => setAnswers(data)))
     }, []);
@@ -26,7 +26,7 @@ const Answers = () => {
         <div>
           {
             question ?
-            <Question1 
+            <Question 
             id={question.id}
             title={question.title}
             user={question.user_id}
@@ -55,4 +55,4 @@ const Answers = () => {
     );
   }
   
-  export default Answers
+  export default Entries

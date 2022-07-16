@@ -1,7 +1,7 @@
 const EditAnswer = ( { answer_id, text} ) => {
 
   const editAnswer = e => {
-    fetch(`http://localhost:5000/api/answers/${answer_id}`, {
+    fetch(`http://localhost:5000/posts/answers/${answer_id}`, {
       method: 'PATCH',
       headers: {
         'Content-Type': 'application/json'
