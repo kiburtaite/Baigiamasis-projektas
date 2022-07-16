@@ -2,6 +2,8 @@ import 'dotenv/config';
 import express from 'express';
 import cors from 'cors';
 import fetch from 'node-fetch';
+import { v4 as uuid } from 'uuid';
+import bcrypt from 'bcrypt';
 
 const app = express();
 const BACK_PORT = process.env.BACK_PORT;
@@ -10,6 +12,31 @@ const DB_PORT = process.env.DB_PORT;
 app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+
+app.post('/register', async (req, res) => {
+    const allUsers = await fetch(`http://localhost:${DB_PORT}/users`)
+    .then(data => data.json());
+    const usernameCheck = allUsers.some(user => user.username === req.body.username);
+    const emailCheck = allUsers.some(user => user.email === req.body.email);
+    if (usernameCheck || emailCheck){
+        res.status(409).send()
+    } else {
+        const newUser = {
+            id: uuid(),
+            username: req.body.username,
+            email: req.body.email,
+            password: await bcrypt.hash(req.body.password, 5)
+        };
+        fetch(`http://localhost:${DB_PORT}/users`, {
+            method: 'POST',
+            headers: {
+            'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(newUser)
+            }),
+        res.json()
+    }
+});
 
 app.get('/api/questions', async (req, res) => {
     const questions = await fetch(`http://localhost:${DB_PORT}/questions`)

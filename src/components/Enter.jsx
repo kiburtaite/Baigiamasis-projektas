@@ -1,8 +1,10 @@
+import Register from './Register';
+
 const Enter = () => {
     return (
       <div>
+        <Register/>
         <p>Login</p>
-        <p>Register</p>
       </div>
     );
   }
