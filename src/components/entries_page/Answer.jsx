@@ -1,8 +1,10 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import { Authorized } from '../../App';
 import EditAnswer from './EditAnswer';
 
 const Answer = ( {id, user, date, text, edited} ) => {
 
+  const authorized = useContext(Authorized);
   const [showEdit, setShowEdit] = useState(false);
 
   const deleteAnswer = (id) => {
@@ -20,8 +22,8 @@ const Answer = ( {id, user, date, text, edited} ) => {
       <h4>{date}</h4>
       <p>{text}</p>
       {edited ? <h6>edited</h6> : null}
-      <button onClick={() => setShowEdit(true)}>Redaguoti atsakymą</button>
-      <button onClick={() => {deleteAnswer(id)}}>Ištrinti atsakymą</button>
+      {authorized ? <button onClick={() => setShowEdit(true)}>Redaguoti atsakymą</button>: null}
+      {authorized ? <button onClick={() => {deleteAnswer(id)}}>Ištrinti atsakymą</button>: null}
       {showEdit ? <EditAnswer answer_id={id} text={text}/> : null}
     </div>
   );

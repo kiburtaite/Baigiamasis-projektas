@@ -1,12 +1,13 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Authorized } from '../../App';
 import EditQuestion from './EditQuestion';
 import Reply from './Reply';
 
 const Question = ( {id, title, user, date, text, edited } ) => {
 
   const navigate = useNavigate();
-  
+  const authorized = useContext(Authorized);
   const [showEdit, setShowEdit] = useState(false);
   const [showReply, setShowReply] = useState(false);
 
@@ -27,9 +28,9 @@ const Question = ( {id, title, user, date, text, edited } ) => {
       <h4>{date}</h4>
       <p>{text}</p>
       {edited ? <h6>edited</h6> : null}
-      <button onClick={() => setShowEdit(true)}>Redaguoti klausimą</button>
-      <button onClick={() => {deleteQuestion(id)}}>Ištrinti klausimą</button>
-      <button onClick={() => setShowReply(true)}>Atsakyti į klausimą</button>
+      {authorized ? <button onClick={() => setShowEdit(true)}>Redaguoti klausimą</button> : null}
+      {authorized ? <button onClick={() => {deleteQuestion(id)}}>Ištrinti klausimą</button> : null}
+      {authorized ? <button onClick={() => setShowReply(true)}>Atsakyti į klausimą</button>: null}
       {showEdit ? <EditQuestion question_id={id} title={title} text={text}/> : null}
       {showReply ? <Reply question_id={id}/> : null}
     </div>
