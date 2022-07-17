@@ -10,7 +10,7 @@ const Ask = () => {
         const newQuestion = {
             id: uuid(),
             date: new Date().toISOString().slice(0, 10),
-            user_id: "user0",
+            user_id: localStorage.getItem('user_id'),
             title: e.target.elements.title.value,
             text: e.target.elements.text.value,
             edited: false

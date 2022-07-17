@@ -11,7 +11,7 @@ const Reply = ({ question_id }) => {
             id: uuid(),
             date: new Date().toISOString().slice(0, 10),
             text: e.target.elements.text.value,
-            user_id: "user0",
+            user_id: localStorage.getItem('user_id'),
             question_id: question_id,
             edited: false,
             likes: 0,
