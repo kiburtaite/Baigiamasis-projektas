@@ -4,8 +4,9 @@ const Login = () => {
 
     const navigate = useNavigate();
 
-    const addToken = ((token) => {
-        localStorage.setItem('token', token)
+    const addToken = ((data) => {
+        localStorage.setItem('token', data.token);
+        localStorage.setItem('user_id', data.user_id);
     });
 
     const loginUser = e => {
@@ -24,7 +25,7 @@ const Login = () => {
         .then(res => {
             if (res.ok){
                 res.json()
-                .then(data => addToken(data.token))
+                .then(data => addToken(data))
                 .then(alert("Sėkmingai prisijungėte"))
                 .then(navigate('/'))
             } else if (res.status === 401){
