@@ -22,6 +22,8 @@ const Front = () => {
 
   const dateAsc = (a, b) => a.date > b.date ? 1 : -1;
   const dateDesc = (a, b) => a.date > b.date ? -1 : 1;
+  const answersAsc = (a, b) => answerCounter(a.id) > answerCounter(b.id) ? 1 : -1;
+  const answersDesc = (a, b) => answerCounter(a.id) > answerCounter(b.id) ? -1 : 1;
 
   const selected = e => {
     if(e.target.value==="all"){
@@ -44,10 +46,10 @@ const Front = () => {
     <div>
       <div>
         <span>Rikiavimas </span>
-        {order ?
-          <button onClick={() => setOrder(0)}>Pagal datą</button> :
-          <button onClick={() => setOrder(1)}>Pagal datą</button>
-        }
+          <button onClick={() => setOrder(0)}>Seniausi</button>
+          <button onClick={() => setOrder(1)}>Naujausi</button>
+          <button onClick={() => setOrder(2)}>Daugiausiai atsakymų</button>
+          <button onClick={() => setOrder(3)}>Mažiausiai atsakymų</button>
         <span> Filtravimas </span>
         <select onChange={e => selected(e)}>
           <option value="all">Rodyti visus</option>
@@ -58,7 +60,11 @@ const Front = () => {
       <div>
         {
           questions ? 
-          questions.sort(order ? dateDesc : dateAsc)
+          questions.sort(
+            order === 0 ? dateAsc : 
+            order === 1 ? dateDesc : 
+            order === 2 ? answersDesc : answersAsc
+            )
           .map(question => 
             <Caption
             id={question.id}
