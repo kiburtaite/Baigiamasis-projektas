@@ -8,6 +8,7 @@ const Question = ( {id, title, user, date, text, edited } ) => {
 
   const navigate = useNavigate();
   const authorized = useContext(Authorized);
+  const personalPost = user === localStorage.getItem('user_id');
   const [showEdit, setShowEdit] = useState(false);
   const [showReply, setShowReply] = useState(false);
 
@@ -28,8 +29,8 @@ const Question = ( {id, title, user, date, text, edited } ) => {
       <h4>{date}</h4>
       <p>{text}</p>
       {edited ? <h6>edited</h6> : null}
-      {authorized ? <button onClick={() => setShowEdit(true)}>Redaguoti klausimą</button> : null}
-      {authorized ? <button onClick={() => {deleteQuestion(id)}}>Ištrinti klausimą</button> : null}
+      {authorized && personalPost ? <button onClick={() => setShowEdit(true)}>Redaguoti klausimą</button> : null}
+      {authorized && personalPost ? <button onClick={() => {deleteQuestion(id)}}>Ištrinti klausimą</button> : null}
       {authorized ? <button onClick={() => setShowReply(true)}>Atsakyti į klausimą</button>: null}
       {showEdit ? <EditQuestion question_id={id} title={title} text={text}/> : null}
       {showReply ? <Reply question_id={id}/> : null}
