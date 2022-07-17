@@ -4,6 +4,10 @@ const Login = () => {
 
     const navigate = useNavigate();
 
+    const addToken = ((token) => {
+        localStorage.setItem('token', token)
+    });
+
     const loginUser = e => {
         e.preventDefault();
         const loginData = {
@@ -19,8 +23,10 @@ const Login = () => {
             })
         .then(res => {
             if (res.ok){
-                alert("Sėkmingai prisijungėte");
-                navigate('/')
+                res.json()
+                .then(data => addToken(data.token))
+                .then(alert("Sėkmingai prisijungėte"))
+                .then(navigate('/'))
             } else if (res.status === 401){
                 alert("Klaidingas vartotojo vardas arba slaptažodis")
             }

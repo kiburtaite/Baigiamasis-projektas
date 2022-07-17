@@ -43,7 +43,7 @@ router.post('/login', async (req, res) => {
         return res.cookie('token', token, {
             httpOnly: true
         })
-        .status(200).send()
+        .status(200).json({token: token})
     } else res.status(401).send()
 });
 
