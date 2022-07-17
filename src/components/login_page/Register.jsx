@@ -1,4 +1,8 @@
+import { useNavigate } from 'react-router-dom';
+
 const Register = () => {
+
+    const navigate = useNavigate();
 
     const addUser = e => {
         e.preventDefault();  
@@ -25,7 +29,8 @@ const Register = () => {
             })
             .then(res => {
                 if (res.ok){
-                    alert("Sėkmingai prisiregistavote")
+                    alert("Sėkmingai prisiregistavote");
+                    (navigate('/login'))
                 } else if (res.status === 409){
                     alert("Nurodytas vartotojas jau egzistuoja")
                 }
