@@ -1,5 +1,4 @@
 import { useNavigate } from 'react-router-dom';
-import { v4 as uuid } from 'uuid';
 
 const Reply = ({ question_id }) => {
 
@@ -8,14 +7,10 @@ const Reply = ({ question_id }) => {
     const addAnswer = e => {
         e.preventDefault();
         const newAnswer = {
-            id: uuid(),
-            date: new Date().toISOString().slice(0, 10),
-            text: e.target.elements.text.value,
-            user_id: localStorage.getItem('user_id'),
-            question_id: question_id,
-            edited: false,
-            likes: 0,
-            dislikes: 0
+          token: localStorage.getItem('token'),
+          user_id: localStorage.getItem('user_id'),
+          question_id: question_id,     
+          text: e.target.elements.text.value
         };
         fetch(`http://localhost:5000/posts/questions/${question_id}/answers`, {
             method: 'POST',

@@ -1,5 +1,4 @@
 import { useNavigate } from 'react-router-dom';
-import { v4 as uuid } from 'uuid';
 
 const Ask = () => {
 
@@ -8,12 +7,10 @@ const Ask = () => {
     const addQuestion = e => {
         e.preventDefault();
         const newQuestion = {
-            id: uuid(),
-            date: new Date().toISOString().slice(0, 10),
+            token: localStorage.getItem('token'),
             user_id: localStorage.getItem('user_id'),
             title: e.target.elements.title.value,
             text: e.target.elements.text.value,
-            edited: false
         };
         fetch('http://localhost:5000/posts/questions', {
             method: 'POST',
@@ -22,7 +19,7 @@ const Ask = () => {
             },
             body : JSON.stringify(newQuestion)
       })
-        .then(navigate('/'))
+        .then(navigate('/', { replace : true }))
     };
 
     return (
