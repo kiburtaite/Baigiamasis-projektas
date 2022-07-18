@@ -1,6 +1,6 @@
 import { useState, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Context } from '../Context';
+import { Context } from '../../App';
 import EditQuestion from './EditQuestion';
 import Reply from './Reply';
 

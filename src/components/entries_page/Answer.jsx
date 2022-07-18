@@ -1,5 +1,5 @@
 import { useState, useContext } from 'react';
-import { Context } from '../Context';
+import { Context } from '../../App';
 import EditAnswer from './EditAnswer';
 
 const Answer = ( {id, user, date, text, edited} ) => {
