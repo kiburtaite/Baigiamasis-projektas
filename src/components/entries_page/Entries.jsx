@@ -41,12 +41,9 @@ const Entries = () => {
         {
           answers ? 
           answers.map(answer => 
-            <Answer
-            id={answer.id}
-            user={answer.user_id}
-            date={answer.date}
-            text={answer.text}
-            edited={answer.edited}
+            <Answer 
+            answer={answer}
+            setAnswers={setAnswers}
             />)
           : <p>Loading...</p>
         }

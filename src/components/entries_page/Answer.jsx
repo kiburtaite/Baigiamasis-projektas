@@ -1,11 +1,13 @@
 import { useState, useContext } from 'react';
+import { useParams } from 'react-router-dom';
 import { Context } from '../../App';
 import EditAnswer from './EditAnswer';
 
-const Answer = ( {id, user, date, text, edited} ) => {
+const Answer = ({ answer, setAnswers }) => {
 
   const { authorized } = useContext(Context);
-  const personalPost = user === localStorage.getItem('user_id');
+  const { page_id } = useParams();
+  const personalPost = answer.user_id === localStorage.getItem('user_id');
   const [showEdit, setShowEdit] = useState(false);
 
   const deleteAnswer = (id) => {
@@ -18,17 +20,20 @@ const Answer = ( {id, user, date, text, edited} ) => {
         token: localStorage.getItem('token')
       })
     })
+    .then(fetch(`http://localhost:5000/posts/questions/${page_id}/answers`)
+    .then(res => res.json()
+    .then(data => setAnswers(data))))
   };
 
   return (
-    <div key={id}>
-      <h4>{user}</h4>
-      <h4>{date}</h4>
-      <p>{text}</p>
-      {edited && <h6>edited</h6>}
+    <div key={answer.id}>
+      <h4>{answer.user_id}</h4>
+      <h4>{answer.date}</h4>
+      <p>{answer.text}</p>
+      {answer.edited && <h6>edited</h6>}
       {authorized && personalPost && <button onClick={() => setShowEdit(true)}>Redaguoti atsakymą</button>}
-      {authorized && personalPost && <button onClick={() => {deleteAnswer(id)}}>Ištrinti atsakymą</button>}
-      {showEdit && <EditAnswer answer_id={id} text={text}/>}
+      {authorized && personalPost && <button onClick={() => {deleteAnswer(answer.id)}}>Ištrinti atsakymą</button>}
+      {showEdit && <EditAnswer answer_id={answer.id} text={answer.text}/>}
     </div>
   );
 }
