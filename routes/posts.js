@@ -60,13 +60,12 @@ router.patch('/questions/:question_id', authentication, async (req, res) => {
     res.json()
 });
 
-router.delete('/questions/:question_id', async (req, res) => {
+router.delete('/questions/:question_id', authentication, async (req, res) => {
     fetch(`http://localhost:${DB_PORT}/questions/${req.params.question_id}`, {
         method: 'DELETE',
         headers: {
         'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(req.body)
+        }
         }),
     res.json()
 });
@@ -119,13 +118,12 @@ router.patch('/answers/:answer_id', authentication, async (req, res) => {
     res.json()
 });
 
-router.delete('/answers/:answer_id', async (req, res) => {
+router.delete('/answers/:answer_id', authentication, async (req, res) => {
     fetch(`http://localhost:${DB_PORT}/answers/${req.params.answer_id}`, {
         method: 'DELETE',
         headers: {
         'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(req.body)
+        }
         }),
     res.json()
 });

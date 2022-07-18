@@ -13,7 +13,10 @@ const Answer = ( {id, user, date, text, edited} ) => {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json'
-      }
+      },
+      body: JSON.stringify({
+        token: localStorage.getItem('token')
+      })
     })
   };
 
