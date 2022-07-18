@@ -20,14 +20,14 @@ const Login = () => {
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body : JSON.stringify(loginData)
+                body: JSON.stringify(loginData)
             })
         .then(res => {
             if (res.ok){
                 res.json()
                 .then(data => addToken(data))
                 .then(alert("Sėkmingai prisijungėte"))
-                .then(navigate('/'))
+                .then(navigate('/', { replace: true }))
             } else if (res.status === 401){
                 alert("Klaidingas vartotojo vardas arba slaptažodis")
             }

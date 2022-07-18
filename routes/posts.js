@@ -1,24 +1,10 @@
 import express from 'express';
+import authorization from './authorization.js';
 import fetch from 'node-fetch';
-import jwt from 'jsonwebtoken';
 import { v4 as uuid } from 'uuid';
 
 const router = express.Router();
 const DB_PORT = process.env.DB_PORT;
-
-const authentication = async (req, res, next) => {
-    const token = req.body.token;
-    if (token){
-        jwt.verify(req.body.token, process.env.KEY, (err, decoded) => {
-            if(err){
-                console.log("error");
-            } else {
-                console.log("success")
-                next();
-            }
-        })
-    }
-};
 
 router.get('/questions', async (req, res) => {
     const questions = await fetch(`http://localhost:${DB_PORT}/questions`)
@@ -26,7 +12,7 @@ router.get('/questions', async (req, res) => {
     res.json(questions) 
 });
 
-router.post('/questions', authentication, async (req, res) => {
+router.post('/questions', authorization, async (req, res) => {
     const newQuestion = {
         id: uuid(),
         date: new Date().toISOString().slice(0, 10),
@@ -45,7 +31,7 @@ router.post('/questions', authentication, async (req, res) => {
     res.json()
 });
 
-router.patch('/questions/:question_id', authentication, async (req, res) => {
+router.patch('/questions/:question_id', authorization, async (req, res) => {
     fetch(`http://localhost:${DB_PORT}/questions/${req.params.question_id}`, {
         method: 'PATCH',
         headers: {
@@ -60,7 +46,7 @@ router.patch('/questions/:question_id', authentication, async (req, res) => {
     res.json()
 });
 
-router.delete('/questions/:question_id', authentication, async (req, res) => {
+router.delete('/questions/:question_id', authorization, async (req, res) => {
     fetch(`http://localhost:${DB_PORT}/questions/${req.params.question_id}`, {
         method: 'DELETE',
         headers: {
@@ -83,7 +69,7 @@ router.get('/questions/:question_id/answers', async (req, res) => {
     res.json(answers) 
 });
 
-router.post('/questions/:question_id/answers', authentication, async (req, res) => {
+router.post('/questions/:question_id/answers', authorization, async (req, res) => {
     const newAnswer = {
         id: uuid(),
         date: new Date().toISOString().slice(0, 10),
@@ -104,7 +90,7 @@ router.post('/questions/:question_id/answers', authentication, async (req, res) 
     res.json()
 });
 
-router.patch('/answers/:answer_id', authentication, async (req, res) => {
+router.patch('/answers/:answer_id', authorization, async (req, res) => {
     fetch(`http://localhost:${DB_PORT}/answers/${req.params.answer_id}`, {
         method: 'PATCH',
         headers: {
@@ -118,7 +104,7 @@ router.patch('/answers/:answer_id', authentication, async (req, res) => {
     res.json()
 });
 
-router.delete('/answers/:answer_id', authentication, async (req, res) => {
+router.delete('/answers/:answer_id', authorization, async (req, res) => {
     fetch(`http://localhost:${DB_PORT}/answers/${req.params.answer_id}`, {
         method: 'DELETE',
         headers: {

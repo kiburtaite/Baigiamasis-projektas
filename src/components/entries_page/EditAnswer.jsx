@@ -6,7 +6,7 @@ const EditAnswer = ( { answer_id, text} ) => {
       headers: {
         'Content-Type': 'application/json'
       },
-      body : JSON.stringify({
+      body: JSON.stringify({
         token: localStorage.getItem('token'),
         text: e.target.elements.text.value
       })

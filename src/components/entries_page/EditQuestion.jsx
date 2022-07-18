@@ -6,7 +6,7 @@ const EditQuestion = ({ question_id, title, text }) => {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body : JSON.stringify({
+            body: JSON.stringify({
                 token: localStorage.getItem('token'),
                 title: e.target.elements.title.value,
                 text: e.target.elements.text.value

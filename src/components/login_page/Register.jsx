@@ -25,12 +25,12 @@ const Register = () => {
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                body : JSON.stringify(newUser)
+                body: JSON.stringify(newUser)
             })
             .then(res => {
                 if (res.ok){
                     alert("Sėkmingai prisiregistavote");
-                    (navigate('/login'))
+                    (navigate('/login', { replace: true }))
                 } else if (res.status === 409){
                     alert("Nurodytas vartotojas jau egzistuoja")
                 }

@@ -13,9 +13,9 @@ export const Authorized = createContext(false);
 const App = () => {
 
   const [authorized, setAuthorized] = useState(false);
+  const token = localStorage.getItem('token');
 
   useEffect(() => {
-    const token = localStorage.getItem('token');
     if(token){
       setAuthorized(true)
     }
