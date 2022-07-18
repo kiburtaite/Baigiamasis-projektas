@@ -27,12 +27,7 @@ const Entries = () => {
           {
             question ?
             <Question 
-            id={question.id}
-            title={question.title}
-            user={question.user_id}
-            date={question.date}
-            text={question.text}
-            edited={question.edited}
+            question={question}
             />
             : <p>Loading...</p>
           }

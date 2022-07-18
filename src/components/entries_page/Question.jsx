@@ -4,11 +4,11 @@ import { Context } from '../../App';
 import EditQuestion from './EditQuestion';
 import Reply from './Reply';
 
-const Question = ( {id, title, user, date, text, edited } ) => {
+const Question = ({ question }) => {
 
   const navigate = useNavigate();
   const { authorized } = useContext(Context);
-  const personalPost = user === localStorage.getItem('user_id');
+  const personalPost = question.user_id === localStorage.getItem('user_id');
   const [showEdit, setShowEdit] = useState(false);
   const [showReply, setShowReply] = useState(false);
 
@@ -26,17 +26,17 @@ const Question = ( {id, title, user, date, text, edited } ) => {
   };
 
   return (
-    <div key={id}>
-      <h3>{title}</h3>
-      <h4>{user}</h4>
-      <h4>{date}</h4>
-      <p>{text}</p>
-      {edited && <h6>edited</h6>}
+    <div key={question.id}>
+      <h3>{question.title}</h3>
+      <h4>{question.user_id}</h4>
+      <h4>{question.date}</h4>
+      <p>{question.text}</p>
+      {question.edited && <h6>edited</h6>}
       {authorized && personalPost && <button onClick={() => setShowEdit(true)}>Redaguoti klausimą</button>}
-      {authorized && personalPost && <button onClick={() => {deleteQuestion(id)}}>Ištrinti klausimą</button>}
+      {authorized && personalPost && <button onClick={() => {deleteQuestion(question.id)}}>Ištrinti klausimą</button>}
       {authorized ? <button onClick={() => setShowReply(true)}>Atsakyti į klausimą</button>: null}
-      {showEdit && <EditQuestion question_id={id} title={title} text={text}/>}
-      {showReply && <Reply question_id={id}/>}
+      {showEdit && <EditQuestion question_id={question.id} title={question.title} text={question.text}/>}
+      {showReply && <Reply question_id={question.id}/>}
     </div>
   );
 }
