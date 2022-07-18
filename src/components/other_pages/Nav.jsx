@@ -1,24 +1,23 @@
 import { useContext } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { Authorized } from '../../App';
+import { Link } from 'react-router-dom';
+import { Context } from '../Context';
 
 const Nav = () => {
 
-    const authorized = useContext(Authorized);
-    const navigate = useNavigate();
+    const { authorized, setAuthorized } = useContext(Context);
 
     const logout = () => {
         localStorage.clear();
-        navigate('/')
+        setAuthorized(false)
     }; 
 
     return (
       <div>
         <Link to='/'>Visi klausimai</Link>
-        {authorized ? <Link to='/ask'>Užduoti naują klausimą</Link> : null}
-        {authorized ? null : <Link to='/login'>Prisijungti</Link>}
-        {authorized ? null : <Link to='/register'>Registruotis</Link>}
-        {authorized ? <button onClick={logout}>Atsijungti</button>: null}
+        {authorized && <Link to='/ask'>Užduoti naują klausimą</Link>}
+        {!authorized && <Link to='/login'>Prisijungti</Link>}
+        {!authorized && <Link to='/register'>Registruotis</Link>}
+        {authorized && <button onClick={logout}>Atsijungti</button>}
       </div>
     );
   }

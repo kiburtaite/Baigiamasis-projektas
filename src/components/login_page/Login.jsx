@@ -1,7 +1,10 @@
+import { useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Context } from '../Context';
 
 const Login = () => {
 
+    const { setAuthorized } = useContext(Context);
     const navigate = useNavigate();
 
     const addToken = ((data) => {
@@ -26,6 +29,7 @@ const Login = () => {
             if (res.ok){
                 res.json()
                 .then(data => addToken(data))
+                .then(setAuthorized(true))
                 .then(alert("Sėkmingai prisijungėte"))
                 .then(navigate('/', { replace: true }))
             } else if (res.status === 401){

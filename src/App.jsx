@@ -1,5 +1,6 @@
-import { useState, useEffect, createContext } from 'react';
+import { useState, useEffect } from 'react';
 import { Routes, Route } from 'react-router-dom';
+import { Context } from './components/Context';
 import Nav from './components/other_pages/Nav';
 import Front from './components/front_page/Front';
 import Entries from './components/entries_page/Entries';
@@ -7,8 +8,6 @@ import Login from './components/login_page/Login';
 import Register from './components/login_page/Register';
 import Ask from './components/other_pages/Ask';
 import NotFound from './components/other_pages/NotFound';
-
-export const Authorized = createContext(false);
 
 const App = () => {
 
@@ -22,7 +21,7 @@ const App = () => {
   }, [authorized]);
 
   return (
-    <Authorized.Provider value={authorized}>
+    <Context.Provider value={{ authorized, setAuthorized }}>
       <Nav/>
       <Routes>
         <Route path='/' element={<Front/>}/>
@@ -32,7 +31,7 @@ const App = () => {
         <Route path='ask' element={<Ask/>}/>
         <Route path='*' element={<NotFound/>}/>
       </Routes>
-    </Authorized.Provider>
+    </Context.Provider>
   );
 }
 
