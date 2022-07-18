@@ -45,13 +45,17 @@ router.post('/questions', authentication, async (req, res) => {
     res.json()
 });
 
-router.patch('/questions/:question_id', async (req, res) => {
+router.patch('/questions/:question_id', authentication, async (req, res) => {
     fetch(`http://localhost:${DB_PORT}/questions/${req.params.question_id}`, {
         method: 'PATCH',
         headers: {
         'Content-Type': 'application/json'
         },
-        body : JSON.stringify(req.body)
+        body: JSON.stringify({
+            title: req.body.title,
+            text: req.body.text,
+            edited: true
+        })
         }),
     res.json()
 });
@@ -62,7 +66,7 @@ router.delete('/questions/:question_id', async (req, res) => {
         headers: {
         'Content-Type': 'application/json'
         },
-        body : JSON.stringify(req.body)
+        body: JSON.stringify(req.body)
         }),
     res.json()
 });
@@ -101,13 +105,16 @@ router.post('/questions/:question_id/answers', authentication, async (req, res) 
     res.json()
 });
 
-router.patch('/answers/:answer_id', async (req, res) => {
+router.patch('/answers/:answer_id', authentication, async (req, res) => {
     fetch(`http://localhost:${DB_PORT}/answers/${req.params.answer_id}`, {
         method: 'PATCH',
         headers: {
         'Content-Type': 'application/json'
         },
-        body : JSON.stringify(req.body)
+        body: JSON.stringify({
+            text: req.body.text,
+            edited: true
+        })
         }),
     res.json()
 });
@@ -118,7 +125,7 @@ router.delete('/answers/:answer_id', async (req, res) => {
         headers: {
         'Content-Type': 'application/json'
         },
-        body : JSON.stringify(req.body)
+        body: JSON.stringify(req.body)
         }),
     res.json()
 });

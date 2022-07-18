@@ -7,9 +7,9 @@ const EditQuestion = ({ question_id, title, text }) => {
                 'Content-Type': 'application/json'
             },
             body : JSON.stringify({
+                token: localStorage.getItem('token'),
                 title: e.target.elements.title.value,
-                text: e.target.elements.text.value,
-                edited: true
+                text: e.target.elements.text.value
             })
         })
     };

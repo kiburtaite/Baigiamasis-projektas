@@ -17,7 +17,7 @@ const Reply = ({ question_id }) => {
             headers: {
                 'Content-Type': 'application/json'
             },
-            body : JSON.stringify(newAnswer)
+            body: JSON.stringify(newAnswer)
       })
         .then(navigate(`/question/${question_id}`))
     };

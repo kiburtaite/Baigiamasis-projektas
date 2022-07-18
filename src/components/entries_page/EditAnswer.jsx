@@ -7,8 +7,8 @@ const EditAnswer = ( { answer_id, text} ) => {
         'Content-Type': 'application/json'
       },
       body : JSON.stringify({
-        text: e.target.elements.text.value,
-        edited: true
+        token: localStorage.getItem('token'),
+        text: e.target.elements.text.value
       })
     })
   };
