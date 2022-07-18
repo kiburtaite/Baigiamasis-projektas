@@ -67,11 +67,8 @@ const Front = () => {
             )
           .map(question => 
             <Caption
-            id={question.id}
-            title={question.title}
-            user={question.user_id}
-            date={question.date}
-            answers={answerCounter(question.id)}
+            question={question}
+            answer_count={answerCounter(question.id)}
             />)
           : <p>Loading...</p>
         }
