@@ -1,8 +1,4 @@
-import { useNavigate } from 'react-router-dom';
-
-const Reply = ({ question_id }) => {
-
-    const navigate = useNavigate();
+const Reply = ({ question_id, setAnswers, setShowReply }) => {
 
     const addAnswer = e => {
         e.preventDefault();
@@ -19,7 +15,10 @@ const Reply = ({ question_id }) => {
             },
             body: JSON.stringify(newAnswer)
       })
-        .then(navigate(`/question/${question_id}`))
+      .then(fetch(`http://localhost:5000/posts/questions/${question_id}/answers`)
+        .then(res => res.json()
+        .then(data => setAnswers(data))
+        .then(setShowReply(false))))
     };
 
     return (

@@ -28,6 +28,7 @@ const Entries = () => {
             question ?
             <Question 
             question={question}
+            setAnswers={setAnswers}
             />
             : <p>Loading...</p>
           }

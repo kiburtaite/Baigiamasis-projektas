@@ -4,7 +4,7 @@ import { Context } from '../../App';
 import EditQuestion from './EditQuestion';
 import Reply from './Reply';
 
-const Question = ({ question }) => {
+const Question = ({ question, setAnswers }) => {
 
   const navigate = useNavigate();
   const { authorized } = useContext(Context);
@@ -36,7 +36,7 @@ const Question = ({ question }) => {
       {authorized && personalPost && <button onClick={() => {deleteQuestion(question.id)}}>Ištrinti klausimą</button>}
       {authorized ? <button onClick={() => setShowReply(true)}>Atsakyti į klausimą</button>: null}
       {showEdit && <EditQuestion question_id={question.id} title={question.title} text={question.text}/>}
-      {showReply && <Reply question_id={question.id}/>}
+      {showReply && <Reply question_id={question.id} setAnswers={setAnswers} setShowReply={setShowReply}/>}
     </div>
   );
 }
