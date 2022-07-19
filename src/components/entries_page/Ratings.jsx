@@ -28,7 +28,8 @@ const Ratings = ({ answer }) => {
     const addLike = () => {
         setDislikes(false);
         setLikes(true);
-        /*if (findRating){
+        switch (findRating){
+            case findRating:
             fetch(`http://localhost:5000/ratings/ratings/${findRating.id}`, {
             method: 'DELETE',
             headers: {
@@ -37,8 +38,8 @@ const Ratings = ({ answer }) => {
             body: JSON.stringify({
             token: localStorage.getItem('token')
             })
-        })
-        };*/
+        });
+        default:
         fetch(`http://localhost:5000/ratings/ratings`, {
             method: 'POST',
             headers: {
@@ -55,12 +56,15 @@ const Ratings = ({ answer }) => {
             .then(res => res.json()
             .then(data => data.filter(rating => rating.answer_id === answer.id))
             .then(data => setAnswerRatings(data))))
+            break
+        }
     };
 
     const addDislike = () => {
         setLikes(false);
         setDislikes(true);
-        /*if (findRating){
+        switch (findRating){
+            case findRating:
             fetch(`http://localhost:5000/ratings/ratings/${findRating.id}`, {
             method: 'DELETE',
             headers: {
@@ -69,8 +73,8 @@ const Ratings = ({ answer }) => {
             body: JSON.stringify({
             token: localStorage.getItem('token')
             })
-        })
-        };*/
+        });
+        default:
         fetch(`http://localhost:5000/ratings/ratings`, {
             method: 'POST',
             headers: {
@@ -87,6 +91,8 @@ const Ratings = ({ answer }) => {
             .then(res => res.json()
             .then(data => data.filter(rating => rating.answer_id === answer.id))
             .then(data => setAnswerRatings(data))))
+            break
+        }
     };
 
     const removeLike = () => {
