@@ -28,6 +28,17 @@ const Ratings = ({ answer }) => {
     const addLike = () => {
         setDislikes(false);
         setLikes(true);
+        /*if (findRating){
+            fetch(`http://localhost:5000/ratings/ratings/${findRating.id}`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+            token: localStorage.getItem('token')
+            })
+        })
+        };*/
         fetch(`http://localhost:5000/ratings/ratings`, {
             method: 'POST',
             headers: {
@@ -49,6 +60,17 @@ const Ratings = ({ answer }) => {
     const addDislike = () => {
         setLikes(false);
         setDislikes(true);
+        /*if (findRating){
+            fetch(`http://localhost:5000/ratings/ratings/${findRating.id}`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+            token: localStorage.getItem('token')
+            })
+        })
+        };*/
         fetch(`http://localhost:5000/ratings/ratings`, {
             method: 'POST',
             headers: {
