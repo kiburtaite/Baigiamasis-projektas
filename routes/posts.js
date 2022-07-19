@@ -8,7 +8,7 @@ const DB_PORT = process.env.DB_PORT;
 
 router.get('/questions', async (req, res) => {
     const questions = await fetch(`http://localhost:${DB_PORT}/questions`)
-        .then(questions => questions.json());
+        .then(data => data.json());
     res.json(questions) 
 });
 
@@ -58,7 +58,7 @@ router.delete('/questions/:question_id', authorization, async (req, res) => {
 
 router.get('/answers', async (req, res) => {
     const answers = await fetch(`http://localhost:${DB_PORT}/answers`)
-        .then(answers => answers.json());
+        .then(data => data.json());
     res.json(answers) 
 });
 
@@ -76,9 +76,7 @@ router.post('/questions/:question_id/answers', authorization, async (req, res) =
         user_id: req.body.user_id,
         question_id: req.body.question_id,
         text: req.body.text,
-        edited: false,
-        likes: 0,
-        dislikes: 0
+        edited: false
     };
     fetch(`http://localhost:${DB_PORT}/answers`, {
         method: 'POST',
