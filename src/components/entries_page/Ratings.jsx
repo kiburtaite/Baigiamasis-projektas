@@ -10,7 +10,7 @@ const styleOff = {
     opacity: 0.3
 };
 
-const Ratings = () => {
+const Ratings = ({ answer }) => {
 
     const [likes, setLikes] = useState(false);
     const [dislikes, setDislikes] = useState(false);
@@ -35,10 +35,22 @@ const Ratings = () => {
 
     return (
       <div>
-        {!likes && <button onClick={addLike}><img src={like_logo} style={styleOff}/></button>}
-        {likes && <button onClick={removeLike}><img src={like_logo} style={styleOn}/></button>}
-        {!dislikes && <button onClick={addDislike}><img src={dislike_logo} style={styleOff}/></button>}
-        {dislikes && <button onClick={removeDislike}><img src={dislike_logo} style={styleOn}/></button>}
+        {!likes && <button onClick={addLike}>
+            <span>{answer.likes}</span>
+            <img src={like_logo} style={styleOff}/>
+        </button>}
+        {likes && <button onClick={removeLike}>
+            <span>{answer.likes}</span>
+            <img src={like_logo} style={styleOn}/>
+        </button>}
+        {!dislikes && <button onClick={addDislike}>
+            <img src={dislike_logo} style={styleOff}/>
+            <span>{answer.dislikes}</span>
+        </button>}
+        {dislikes && <button onClick={removeDislike}>
+            <img src={dislike_logo} style={styleOn}/>
+            <span>{answer.dislikes}</span>
+        </button>}
       </div>
     );
   }
