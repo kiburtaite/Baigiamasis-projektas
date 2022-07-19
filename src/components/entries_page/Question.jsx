@@ -22,7 +22,7 @@ const Question = ({ question, setAnswers }) => {
         token: localStorage.getItem('token')
       })
     })
-      .then(navigate('/'))
+      .then(navigate('/', { replace: true }))
   };
 
   return (
