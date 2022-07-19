@@ -17,6 +17,8 @@ const Ratings = ({ answer }) => {
     const [dislikes, setDislikes] = useState(false);
     const [answerRatings, setAnswerRatings] = useState([]);
     const findRating = answerRatings.find(rating => rating.user_id === user_id);
+    const countLikes = answerRatings.filter(rating => rating.type === "like").length;
+    const countDislikes = answerRatings.filter(rating => rating.type === "dislike").length;
 
     useEffect(() => {
         fetch(`http://localhost:5000/ratings/ratings`)
@@ -29,7 +31,7 @@ const Ratings = ({ answer }) => {
         setDislikes(false);
         setLikes(true);
         switch (findRating){
-            case findRating:
+            /*case findRating:
             fetch(`http://localhost:5000/ratings/ratings/${findRating.id}`, {
             method: 'DELETE',
             headers: {
@@ -38,7 +40,7 @@ const Ratings = ({ answer }) => {
             body: JSON.stringify({
             token: localStorage.getItem('token')
             })
-        });
+        });*/
         default:
         fetch(`http://localhost:5000/ratings/ratings`, {
             method: 'POST',
@@ -64,7 +66,7 @@ const Ratings = ({ answer }) => {
         setLikes(false);
         setDislikes(true);
         switch (findRating){
-            case findRating:
+            /*case findRating:
             fetch(`http://localhost:5000/ratings/ratings/${findRating.id}`, {
             method: 'DELETE',
             headers: {
@@ -73,7 +75,7 @@ const Ratings = ({ answer }) => {
             body: JSON.stringify({
             token: localStorage.getItem('token')
             })
-        });
+        });*/
         default:
         fetch(`http://localhost:5000/ratings/ratings`, {
             method: 'POST',
@@ -124,16 +126,20 @@ const Ratings = ({ answer }) => {
     return (
       <div>
         {!likes && <button onClick={addLike}>
+        <span>{countLikes}</span>
             <img src={like_logo} alt="add like" style={styleOff}/>
         </button>}
         {likes && <button onClick={removeLike}>
+            <span>{countLikes}</span>
             <img src={like_logo} alt="remove like" style={styleOn}/>
         </button>}
         {!dislikes && <button onClick={addDislike}>
             <img src={dislike_logo} alt="add dislike" style={styleOff}/>
+            <span>{countDislikes}</span>
         </button>}
         {dislikes && <button onClick={removeDislike}>
             <img src={dislike_logo} alt="remove dislike" style={styleOn}/>
+            <span>{countDislikes}</span>
         </button>}
       </div>
     );
