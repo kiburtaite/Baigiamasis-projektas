@@ -12,14 +12,17 @@ const styleOff = {
 
 const Ratings = ({ answer }) => {
 
+    const user_id = localStorage.getItem('user_id');
     const [likes, setLikes] = useState(false);
     const [dislikes, setDislikes] = useState(false);
-    const [ratings, setRatings] = useState([]);
+    const [answerRatings, setAnswerRatings] = useState([]);
+    const findRating = answerRatings.find(rating => rating.user_id === user_id);
 
     useEffect(() => {
         fetch(`http://localhost:5000/ratings/ratings`)
             .then(res => res.json()
-            .then(data => setRatings(data)))
+            .then(data => data.filter(rating => rating.answer_id === answer.id))
+            .then(data => setAnswerRatings(data)))
       }, []);
 
     const addLike = () => {
@@ -32,11 +35,15 @@ const Ratings = ({ answer }) => {
             },
             body: JSON.stringify({
                 token: localStorage.getItem('token'),
-                user_id: localStorage.getItem('user_id'),
+                user_id: user_id,
                 answer_id: answer.id,
                 type: 'like'
             })
         })
+        .then(fetch(`http://localhost:5000/ratings/ratings`)
+            .then(res => res.json()
+            .then(data => data.filter(rating => rating.answer_id === answer.id))
+            .then(data => setAnswerRatings(data))))
     };
 
     const addDislike = () => {
@@ -49,21 +56,41 @@ const Ratings = ({ answer }) => {
             },
             body: JSON.stringify({
                 token: localStorage.getItem('token'),
-                user_id: localStorage.getItem('user_id'),
+                user_id: user_id,
                 answer_id: answer.id,
                 type: 'dislike'
             })
         })
+        .then(fetch(`http://localhost:5000/ratings/ratings`)
+            .then(res => res.json()
+            .then(data => data.filter(rating => rating.answer_id === answer.id))
+            .then(data => setAnswerRatings(data))))
     };
 
     const removeLike = () => {
         setLikes(false);
-        
+        fetch(`http://localhost:5000/ratings/ratings/${findRating.id}`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+            token: localStorage.getItem('token')
+      })
+    })
     };
 
     const removeDislike = () => {
         setDislikes(false);
-        
+        fetch(`http://localhost:5000/ratings/ratings/${findRating.id}`, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+            token: localStorage.getItem('token')
+      })
+    })
     };
 
     return (

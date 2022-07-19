@@ -29,4 +29,14 @@ router.post('/ratings', authorization, async (req, res) => {
     res.json()
 });
 
+router.delete('/ratings/:rating_id', authorization, async (req, res) => {
+    fetch(`http://localhost:${DB_PORT}/ratings/${req.params.rating_id}`, {
+        method: 'DELETE',
+        headers: {
+        'Content-Type': 'application/json'
+        }
+        }),
+    res.json()
+});
+
 export default router
