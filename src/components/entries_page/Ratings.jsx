@@ -13,10 +13,10 @@ const styleOff = {
 const Ratings = ({ answer }) => {
 
     const user_id = localStorage.getItem('user_id');
-    const [likes, setLikes] = useState(false);
-    const [dislikes, setDislikes] = useState(false);
     const [answerRatings, setAnswerRatings] = useState([]);
-    const findRating = answerRatings.find(rating => rating.user_id === user_id);
+    const findRating = answerRatings.filter(rating => rating.user_id === user_id);
+    const likes = findRating.some(rating => rating.type === "like");
+    const dislikes = findRating.some(rating => rating.type === "dislike");
     const countLikes = answerRatings.filter(rating => rating.type === "like").length;
     const countDislikes = answerRatings.filter(rating => rating.type === "dislike").length;
 
@@ -28,8 +28,6 @@ const Ratings = ({ answer }) => {
       }, [answer.id]);
 
     const addLike = () => {
-        setDislikes(false);
-        setLikes(true);
         switch (findRating){
             /*case findRating:
             fetch(`http://localhost:5000/ratings/ratings/${findRating.id}`, {
@@ -57,14 +55,13 @@ const Ratings = ({ answer }) => {
         .then(fetch(`http://localhost:5000/ratings/ratings`)
             .then(res => res.json()
             .then(data => data.filter(rating => rating.answer_id === answer.id))
-            .then(data => setAnswerRatings(data))))
+            .then(data => setAnswerRatings(data)))
+            .then(likes === true, dislikes === false))
             break
         }
     };
 
     const addDislike = () => {
-        setLikes(false);
-        setDislikes(true);
         switch (findRating){
             /*case findRating:
             fetch(`http://localhost:5000/ratings/ratings/${findRating.id}`, {
@@ -92,13 +89,13 @@ const Ratings = ({ answer }) => {
         .then(fetch(`http://localhost:5000/ratings/ratings`)
             .then(res => res.json()
             .then(data => data.filter(rating => rating.answer_id === answer.id))
-            .then(data => setAnswerRatings(data))))
+            .then(data => setAnswerRatings(data)))
+            .then(dislikes === true, likes === false))
             break
         }
     };
 
     const removeLike = () => {
-        setLikes(false);
         fetch(`http://localhost:5000/ratings/ratings/${findRating.id}`, {
             method: 'DELETE',
             headers: {
@@ -106,12 +103,12 @@ const Ratings = ({ answer }) => {
             },
             body: JSON.stringify({
             token: localStorage.getItem('token')
-      })
-    })
+            })
+        })
+        .then(likes === false)
     };
 
     const removeDislike = () => {
-        setDislikes(false);
         fetch(`http://localhost:5000/ratings/ratings/${findRating.id}`, {
             method: 'DELETE',
             headers: {
@@ -119,8 +116,9 @@ const Ratings = ({ answer }) => {
             },
             body: JSON.stringify({
             token: localStorage.getItem('token')
-      })
-    })
+            })
+        })
+        .then(dislikes === false)
     };
 
     return (
