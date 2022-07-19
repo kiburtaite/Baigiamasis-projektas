@@ -19,18 +19,22 @@ const Ratings = ({ answer }) => {
     const dislikes = findRating.some(rating => rating.type === "dislike");
     const countLikes = answerRatings.filter(rating => rating.type === "like").length;
     const countDislikes = answerRatings.filter(rating => rating.type === "dislike").length;
+    const ratingNeeded = answerRatings.find(rating => rating.user_id === user_id);
 
     useEffect(() => {
         fetch(`http://localhost:5000/ratings/ratings`)
             .then(res => res.json()
             .then(data => data.filter(rating => rating.answer_id === answer.id))
-            .then(data => setAnswerRatings(data)))
+            .then(data => {
+                setAnswerRatings(data);
+                
+            }))
       }, [answer.id]);
 
     const addLike = () => {
-        switch (findRating){
-            /*case findRating:
-            fetch(`http://localhost:5000/ratings/ratings/${findRating.id}`, {
+        switch (ratingNeeded){
+            case ratingNeeded.id:
+            fetch(`http://localhost:5000/ratings/ratings/${ratingNeeded.id}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json'
@@ -38,7 +42,7 @@ const Ratings = ({ answer }) => {
             body: JSON.stringify({
             token: localStorage.getItem('token')
             })
-        });*/
+        });
         default:
         fetch(`http://localhost:5000/ratings/ratings`, {
             method: 'POST',
@@ -55,16 +59,15 @@ const Ratings = ({ answer }) => {
         .then(fetch(`http://localhost:5000/ratings/ratings`)
             .then(res => res.json()
             .then(data => data.filter(rating => rating.answer_id === answer.id))
-            .then(data => setAnswerRatings(data)))
-            .then(likes === true, dislikes === false))
+            .then(data => setAnswerRatings(data))))
             break
         }
     };
 
     const addDislike = () => {
-        switch (findRating){
-            /*case findRating:
-            fetch(`http://localhost:5000/ratings/ratings/${findRating.id}`, {
+        switch (ratingNeeded){
+            case ratingNeeded.id:
+            fetch(`http://localhost:5000/ratings/ratings/${ratingNeeded.id}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json'
@@ -72,7 +75,7 @@ const Ratings = ({ answer }) => {
             body: JSON.stringify({
             token: localStorage.getItem('token')
             })
-        });*/
+        });
         default:
         fetch(`http://localhost:5000/ratings/ratings`, {
             method: 'POST',
@@ -89,14 +92,13 @@ const Ratings = ({ answer }) => {
         .then(fetch(`http://localhost:5000/ratings/ratings`)
             .then(res => res.json()
             .then(data => data.filter(rating => rating.answer_id === answer.id))
-            .then(data => setAnswerRatings(data)))
-            .then(dislikes === true, likes === false))
+            .then(data => setAnswerRatings(data))))
             break
         }
     };
 
     const removeLike = () => {
-        fetch(`http://localhost:5000/ratings/ratings/${findRating.id}`, {
+        fetch(`http://localhost:5000/ratings/ratings/${ratingNeeded.id}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json'
@@ -105,11 +107,10 @@ const Ratings = ({ answer }) => {
             token: localStorage.getItem('token')
             })
         })
-        .then(likes === false)
     };
 
     const removeDislike = () => {
-        fetch(`http://localhost:5000/ratings/ratings/${findRating.id}`, {
+        fetch(`http://localhost:5000/ratings/ratings/${ratingNeeded.id}`, {
             method: 'DELETE',
             headers: {
                 'Content-Type': 'application/json'
@@ -118,11 +119,11 @@ const Ratings = ({ answer }) => {
             token: localStorage.getItem('token')
             })
         })
-        .then(dislikes === false)
     };
 
     return (
       <div>
+        <button>test</button>
         {!likes && <button onClick={addLike}>
         <span>{countLikes}</span>
             <img src={like_logo} alt="add like" style={styleOff}/>
