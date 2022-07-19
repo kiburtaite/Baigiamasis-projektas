@@ -33,7 +33,7 @@ const Ratings = ({ answer }) => {
 
     const addLike = () => {
         switch (ratingNeeded){
-            case ratingNeeded.id:
+            case ratingNeeded !== undefined:
             fetch(`http://localhost:5000/ratings/ratings/${ratingNeeded.id}`, {
             method: 'DELETE',
             headers: {
@@ -66,7 +66,7 @@ const Ratings = ({ answer }) => {
 
     const addDislike = () => {
         switch (ratingNeeded){
-            case ratingNeeded.id:
+            case ratingNeeded !== undefined:
             fetch(`http://localhost:5000/ratings/ratings/${ratingNeeded.id}`, {
             method: 'DELETE',
             headers: {
@@ -107,6 +107,10 @@ const Ratings = ({ answer }) => {
             token: localStorage.getItem('token')
             })
         })
+        .then(fetch(`http://localhost:5000/ratings/ratings`)
+            .then(res => res.json()
+            .then(data => data.filter(rating => rating.answer_id === answer.id))
+            .then(data => setAnswerRatings(data))))
     };
 
     const removeDislike = () => {
@@ -119,11 +123,14 @@ const Ratings = ({ answer }) => {
             token: localStorage.getItem('token')
             })
         })
+        .then(fetch(`http://localhost:5000/ratings/ratings`)
+            .then(res => res.json()
+            .then(data => data.filter(rating => rating.answer_id === answer.id))
+            .then(data => setAnswerRatings(data))))
     };
 
     return (
       <div>
-        <button>test</button>
         {!likes && <button onClick={addLike}>
         <span>{countLikes}</span>
             <img src={like_logo} alt="add like" style={styleOff}/>
