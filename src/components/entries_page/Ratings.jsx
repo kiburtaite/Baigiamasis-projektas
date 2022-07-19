@@ -23,7 +23,7 @@ const Ratings = ({ answer }) => {
             .then(res => res.json()
             .then(data => data.filter(rating => rating.answer_id === answer.id))
             .then(data => setAnswerRatings(data)))
-      }, []);
+      }, [answer.id]);
 
     const addLike = () => {
         setDislikes(false);
@@ -118,16 +118,16 @@ const Ratings = ({ answer }) => {
     return (
       <div>
         {!likes && <button onClick={addLike}>
-            <img src={like_logo} style={styleOff}/>
+            <img src={like_logo} alt="add like" style={styleOff}/>
         </button>}
         {likes && <button onClick={removeLike}>
-            <img src={like_logo} style={styleOn}/>
+            <img src={like_logo} alt="remove like" style={styleOn}/>
         </button>}
         {!dislikes && <button onClick={addDislike}>
-            <img src={dislike_logo} style={styleOff}/>
+            <img src={dislike_logo} alt="add dislike" style={styleOff}/>
         </button>}
         {dislikes && <button onClick={removeDislike}>
-            <img src={dislike_logo} style={styleOn}/>
+            <img src={dislike_logo} alt="remove dislike" style={styleOn}/>
         </button>}
       </div>
     );

@@ -19,7 +19,7 @@ const Entries = () => {
       fetch(`http://localhost:5000/posts/questions/${page_id}/answers`)
         .then(res => res.json()
         .then(data => setAnswers(data)))
-    }, []);
+    }, [page_id]);
 
     return (
       <div>

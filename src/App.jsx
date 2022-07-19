@@ -19,7 +19,7 @@ const App = () => {
     if(token){
       setAuthorized(true)
     }
-  }, []);
+  }, [token]);
 
   return (
     <Context.Provider value={{ authorized, setAuthorized }}>
