@@ -17,20 +17,60 @@ const Ratings = ({ answer }) => {
 
     const addLike = () => {
         setDislikes(false);
-        setLikes(true)
+        setLikes(true);
+        fetch(`http://localhost:5000/ratings/answers/${answer.id}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                token: localStorage.getItem('token'),
+                likes: answer.likes + 1
+            })
+        })
     };
 
     const addDislike = () => {
         setLikes(false);
-        setDislikes(true)
+        setDislikes(true);
+        fetch(`http://localhost:5000/ratings/answers/${answer.id}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                token: localStorage.getItem('token'),
+                dislikes: answer.dislikes + 1
+            })
+        })
     };
 
     const removeLike = () => {
-        setLikes(false)
+        setLikes(false);
+        fetch(`http://localhost:5000/ratings/answers/${answer.id}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                token: localStorage.getItem('token'),
+                likes: answer.likes - 1
+            })
+        })
     };
 
     const removeDislike = () => {
-        setDislikes(false)
+        setDislikes(false);
+        fetch(`http://localhost:5000/ratings/answers/${answer.id}`, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                token: localStorage.getItem('token'),
+                dislikes: answer.dislikes - 1
+            })
+        })
     };
 
     return (
