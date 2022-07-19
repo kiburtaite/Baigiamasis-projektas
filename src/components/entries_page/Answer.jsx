@@ -2,6 +2,7 @@ import { useState, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import { Context } from '../../App';
 import EditAnswer from './EditAnswer';
+import Ratings from './Ratings';
 
 const Answer = ({ answer, setAnswers }) => {
 
@@ -31,6 +32,7 @@ const Answer = ({ answer, setAnswers }) => {
       <h4>{answer.date}</h4>
       <p>{answer.text}</p>
       {answer.edited && <h6>edited</h6>}
+      <Ratings />
       {authorized && personalPost && <button onClick={() => setShowEdit(true)}>Redaguoti atsakymą</button>}
       {authorized && personalPost && <button onClick={() => {deleteAnswer(answer.id)}}>Ištrinti atsakymą</button>}
       {showEdit && <EditAnswer answer_id={answer.id} text={answer.text}/>}
