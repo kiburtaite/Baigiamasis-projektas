@@ -39,29 +39,29 @@ const Register = () => {
     };
 
     return (
-      <div>
+      <div className="mainForm">
         <h3>Registruotis</h3>
         <form onSubmit={addUser}>
             <input 
             type="text"
             name="username"
             placeholder="Susikurkite vartotojo vardą"
-            />
+            /><br/>
             <input
             type="email"
             name="email"
             placeholder="Įveskite el. paštą"
-            />
+            /><br/>
             <input 
             type="password"
             name="password"
             placeholder="Įveskite slaptažodį"
-            />
+            /><br/>
             <input 
             type="password"
             name="passwordRepeat"
             placeholder="Pakartokite slaptažodį"
-            />
+            /><br/>
             <input 
             type="submit"
             value="Registruotis"

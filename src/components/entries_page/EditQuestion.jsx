@@ -22,11 +22,11 @@ const EditQuestion = ({ question_id, title, text }) => {
             type="text"
             name="title"
             defaultValue={title}
-            />
+            /><br/>
             <textarea
             name="text"
             defaultValue={text}
-            />
+            /><br/>
             <input
             type="submit"
             value="Redaguoti"

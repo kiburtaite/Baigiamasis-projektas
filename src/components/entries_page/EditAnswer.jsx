@@ -20,7 +20,7 @@ const EditAnswer = ( { answer_id, text} ) => {
           <textarea
           name="text"
           defaultValue={text}
-          />
+          /><br/>
           <input
           type="submit"
           value="Redaguoti"

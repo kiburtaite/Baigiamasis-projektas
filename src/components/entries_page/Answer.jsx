@@ -29,11 +29,11 @@ const Answer = ({ answer, setAnswers, users }) => {
 
   return (
     <div key={answer.id} className="answer">
+      <Ratings answer={answer}/>
       <span>{answer.date}</span>
       <span>{user? user.username : answer.user_id}</span>
       <h4>{answer.text}</h4>
       {answer.edited && <h6>edited</h6>}
-      <Ratings answer={answer}/>
       {authorized && personalPost && <button onClick={() => setShowEdit(true)}>Redaguoti atsakymą</button>}
       {authorized && personalPost && <button onClick={() => {deleteAnswer(answer.id)}}>Ištrinti atsakymą</button>}
       {showEdit && <EditAnswer answer_id={answer.id} text={answer.text}/>}

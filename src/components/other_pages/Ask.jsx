@@ -23,18 +23,18 @@ const Ask = () => {
     };
 
     return (
-      <div>
+      <div className="mainForm">
         <h2>Užduoti naują klausimą</h2>
         <form onSubmit={addQuestion}>
             <input
             type="text"
             name="title"
             placeholder="Įveskite klausimo antraštę"
-            />
+            /><br/>
             <textarea
             name="text"
             placeholder="Užduokite klausimą"
-            />
+            /><br/>
             <input
             type="submit"
             value="Klausti"

@@ -39,19 +39,19 @@ const Login = () => {
     };
 
     return (
-      <div>
+      <div className="mainForm">
         <h3>Prisijungti</h3>
         <form onSubmit={loginUser}>
             <input
             type="email"
             name="email"
             placeholder="Įveskite el. paštą"
-            />
+            /><br/>
             <input
             type="password"
             name="password"
             placeholder="Įveskite slaptažodį"
-            />
+            /><br/>
             <input
             type="submit"
             value="Prisijungti"
