@@ -7,6 +7,12 @@ import jwt from 'jsonwebtoken';
 const router = express.Router();
 const DB_PORT = process.env.DB_PORT;
 
+router.get('/users', async (req, res) => {
+    const users = await fetch(`http://localhost:${DB_PORT}/users`)
+        .then(data => data.json());
+    res.json(users) 
+});
+
 router.post('/register', async (req, res) => {
     const allUsers = await fetch(`http://localhost:${DB_PORT}/users`)
     .then(data => data.json());
