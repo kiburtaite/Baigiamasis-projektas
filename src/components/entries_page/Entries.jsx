@@ -9,6 +9,7 @@ const Entries = () => {
 
     const [question, setQuestion] = useState([]);
     const [answers, setAnswers] = useState([]);
+    const [users, setUsers] = useState([]);
 
     useEffect(() => {
       fetch(`http://localhost:5000/posts/questions`)
@@ -19,6 +20,9 @@ const Entries = () => {
       fetch(`http://localhost:5000/posts/questions/${page_id}/answers`)
         .then(res => res.json()
         .then(data => setAnswers(data)))
+      fetch(`http://localhost:5000/users/users`)
+        .then(res => res.json()
+        .then(data => setUsers(data)))
     }, [page_id, answers]);
 
     return (
@@ -29,6 +33,7 @@ const Entries = () => {
             <Question 
             question={question}
             setAnswers={setAnswers}
+            users={users}
             />
             : <p>Loading...</p>
           }
@@ -40,6 +45,7 @@ const Entries = () => {
             <Answer 
             answer={answer}
             setAnswers={setAnswers}
+            users={users}
             />)
           : <p>Loading...</p>
         }

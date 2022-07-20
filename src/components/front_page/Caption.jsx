@@ -1,9 +1,9 @@
 import { Link } from 'react-router-dom';
 
-const Caption = ({ question, answer_count , allUsers }) => {
+const Caption = ({ question, answer_count , users }) => {
 
   const lastDigit = Number(String(answer_count).slice(-1));
-  const user = allUsers.find(user => user.id === question.user_id);
+  const user = users.find(user => user.id === question.user_id);
 
   return (
     <div key={question.id}>

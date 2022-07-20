@@ -4,10 +4,11 @@ import { Context } from '../../App';
 import EditAnswer from './EditAnswer';
 import Ratings from './Ratings';
 
-const Answer = ({ answer, setAnswers }) => {
+const Answer = ({ answer, setAnswers, users }) => {
 
   const { authorized } = useContext(Context);
   const { page_id } = useParams();
+  const user = users.find(user => user.id === answer.user_id);
   const personalPost = answer.user_id === localStorage.getItem('user_id');
   const [showEdit, setShowEdit] = useState(false);
 
@@ -28,7 +29,7 @@ const Answer = ({ answer, setAnswers }) => {
 
   return (
     <div key={answer.id}>
-      <h4>{answer.user_id}</h4>
+      <h4>{user? user.username : answer.user_id}</h4>
       <h4>{answer.date}</h4>
       <p>{answer.text}</p>
       {answer.edited && <h6>edited</h6>}

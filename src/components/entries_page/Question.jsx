@@ -4,10 +4,11 @@ import { Context } from '../../App';
 import EditQuestion from './EditQuestion';
 import Reply from './Reply';
 
-const Question = ({ question, setAnswers }) => {
+const Question = ({ question, setAnswers, users }) => {
 
   const navigate = useNavigate();
   const { authorized } = useContext(Context);
+  const user = users.find(user => user.id === question.user_id);
   const personalPost = question.user_id === localStorage.getItem('user_id');
   const [showEdit, setShowEdit] = useState(false);
   const [showReply, setShowReply] = useState(false);
@@ -28,7 +29,7 @@ const Question = ({ question, setAnswers }) => {
   return (
     <div key={question.id}>
       <h3>{question.title}</h3>
-      <h4>{question.user_id}</h4>
+      <h4>{user? user.username : question.user_id}</h4>
       <h4>{question.date}</h4>
       <p>{question.text}</p>
       {question.edited && <h6>edited</h6>}

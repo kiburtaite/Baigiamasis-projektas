@@ -7,7 +7,7 @@ const Front = () => {
   const [questions, setQuestions] = useState([]);
   const [answers, setAnswers] = useState([]);
   const [order, setOrder] = useState(0);
-  const [allUsers, setAllUsers] = useState([]);
+  const [users, setUsers] = useState([]);
   
   
   useEffect(() => {
@@ -22,7 +22,7 @@ const Front = () => {
       .then(data => setAnswers(data)))
     fetch(`http://localhost:5000/users/users`)
       .then(res => res.json()
-      .then(data => setAllUsers(data)))
+      .then(data => setUsers(data)))
   }, []);
 
   const dateAsc = (a, b) => a.date > b.date ? 1 : -1;
@@ -74,7 +74,7 @@ const Front = () => {
             <Caption
             question={question}
             answer_count={answerCounter(question.id)}
-            allUsers={allUsers}
+            users={users}
             />)
           : <p>Loading...</p>
         }
