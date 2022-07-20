@@ -25,11 +25,8 @@ const Ratings = ({ answer }) => {
         fetch(`http://localhost:5000/ratings/ratings`)
             .then(res => res.json()
             .then(data => data.filter(rating => rating.answer_id === answer.id))
-            .then(data => {
-                setAnswerRatings(data);
-                
-            }))
-      }, [answer.id]);
+            .then(data => {setAnswerRatings(data)}))
+      }, [answer.id, answerRatings]);
 
     const addLike = () => {
         switch (ratingNeeded){
