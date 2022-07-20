@@ -39,6 +39,7 @@ const Entries = () => {
           }
         </div>
         <div>
+          <h2>Atsakymai</h2>
         {
           answers ? 
           answers.map(answer => 

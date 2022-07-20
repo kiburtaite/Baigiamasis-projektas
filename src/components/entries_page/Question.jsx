@@ -27,11 +27,11 @@ const Question = ({ question, setAnswers, users }) => {
   };
 
   return (
-    <div key={question.id}>
-      <h3>{question.title}</h3>
-      <h4>{user? user.username : question.user_id}</h4>
-      <h4>{question.date}</h4>
-      <p>{question.text}</p>
+    <div key={question.id} className="question">
+      <span>{question.date}</span>
+      <span>{user? user.username : question.user_id}</span>
+      <h1>{question.title}</h1>
+      <h3>{question.text}</h3>
       {question.edited && <h6>edited</h6>}
       {authorized && personalPost && <button onClick={() => setShowEdit(true)}>Redaguoti klausimą</button>}
       {authorized && personalPost && <button onClick={() => {deleteQuestion(question.id)}}>Ištrinti klausimą</button>}

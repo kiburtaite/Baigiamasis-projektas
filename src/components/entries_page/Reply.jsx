@@ -28,7 +28,7 @@ const Reply = ({ question_id, setAnswers, setShowReply }) => {
           <textarea
           name="text"
           placeholder="Atsakykite į klausimą"
-          />
+          /><br />
           <input
           type="submit"
           value="Atsakyti"

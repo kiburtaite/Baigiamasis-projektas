@@ -49,13 +49,13 @@ const Front = () => {
 
   return (
     <div>
-      <div>
-        <span>Rikiavimas </span>
+      <div className="selector">
+        <span>Rikiuoti:</span>
           <button onClick={() => setOrder(0)}>Seniausi</button>
           <button onClick={() => setOrder(1)}>Naujausi</button>
           <button onClick={() => setOrder(2)}>Daugiausiai atsakymų</button>
           <button onClick={() => setOrder(3)}>Mažiausiai atsakymų</button>
-        <span> Filtravimas </span>
+        <span> Filtruoti:</span>
         <select onChange={e => selected(e)}>
           <option value="all">Rodyti visus</option>
           <option value="answered">Rodyti atsakytus</option>

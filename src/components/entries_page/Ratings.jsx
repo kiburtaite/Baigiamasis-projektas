@@ -2,14 +2,6 @@ import { useState, useEffect } from 'react';
 import like_logo from '../../images/like.png';
 import dislike_logo from '../../images/dislike.png';
 
-const styleOn = {
-    height: "20px"
-};
-const styleOff = {
-    height: "20px",
-    opacity: 0.3
-};
-
 const Ratings = ({ answer }) => {
 
     const user_id = localStorage.getItem('user_id');
@@ -128,20 +120,20 @@ const Ratings = ({ answer }) => {
 
     return (
       <div>
-        {!likes && <button onClick={addLike}>
+        {!likes && <button onClick={addLike} className="buttonOff">
         <span>{countLikes}</span>
-            <img src={like_logo} alt="add like" style={styleOff}/>
+            <img src={like_logo} alt="add like"/>
         </button>}
-        {likes && <button onClick={removeLike}>
+        {likes && <button onClick={removeLike} className="buttonOn">
             <span>{countLikes}</span>
-            <img src={like_logo} alt="remove like" style={styleOn}/>
+            <img src={like_logo} alt="remove like"/>
         </button>}
-        {!dislikes && <button onClick={addDislike}>
-            <img src={dislike_logo} alt="add dislike" style={styleOff}/>
+        {!dislikes && <button onClick={addDislike} className="buttonOff">
+            <img src={dislike_logo} alt="add dislike"/>
             <span>{countDislikes}</span>
         </button>}
-        {dislikes && <button onClick={removeDislike}>
-            <img src={dislike_logo} alt="remove dislike" style={styleOn}/>
+        {dislikes && <button onClick={removeDislike} className="buttonOn">
+            <img src={dislike_logo} alt="remove dislike"/>
             <span>{countDislikes}</span>
         </button>}
       </div>
