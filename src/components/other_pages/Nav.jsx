@@ -12,13 +12,13 @@ const Nav = () => {
     }; 
 
     return (
-      <div>
+      <nav>
         <Link to='/'>Visi klausimai</Link>
         {authorized && <Link to='/ask'>Užduoti naują klausimą</Link>}
         {!authorized && <Link to='/login'>Prisijungti</Link>}
         {!authorized && <Link to='/register'>Registruotis</Link>}
         {authorized && <button onClick={logout}>Atsijungti</button>}
-      </div>
+      </nav>
     );
   }
   

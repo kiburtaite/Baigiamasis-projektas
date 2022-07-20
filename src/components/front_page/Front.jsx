@@ -62,7 +62,7 @@ const Front = () => {
           <option value="unanswered">Rodyti neatsakytus</option>
         </select>
       </div>
-      <div>
+      <div className="captions">
         {
           questions ? 
           questions.sort(

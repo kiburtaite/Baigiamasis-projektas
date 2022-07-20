@@ -6,15 +6,15 @@ const Caption = ({ question, answer_count , users }) => {
   const user = users.find(user => user.id === question.user_id);
 
   return (
-    <div key={question.id}>
-      <Link to={`/question/${question.id}`}><h3>{question.title}</h3></Link>
-      <h4>{user ? user.username : question.user_id}</h4>
-      <h4>{question.date}</h4>
-      <p>{answer_count}{
+    <Link to={`/question/${question.id}`}><div key={question.id} className="caption">
+      <h5>{question.date}</h5>
+      <h1>{question.title}</h1>
+      <h3>{user ? user.username : question.user_id}</h3>
+      <h4>{answer_count}{
         (answer_count >= 10 && answer_count <= 19) || lastDigit === 0 ? " atsakymų"
          : lastDigit === 1 ? " atsakymas" : " atsakymai"
-      }</p>
-    </div>
+      }</h4>
+    </div></Link>
   );
 }
 

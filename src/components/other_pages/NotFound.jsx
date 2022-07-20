@@ -1,7 +1,10 @@
+import { Link } from 'react-router-dom'
+
 const NotFound = () => {
     return (
       <div>
-        <p>NotFound</p>
+        <p>Puslapis nerastas.</p>
+        <Link to='/'>Grįžti į pradinį puslapį</Link>
       </div>
     );
   }

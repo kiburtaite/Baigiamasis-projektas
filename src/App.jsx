@@ -24,6 +24,7 @@ const App = () => {
   return (
     <Context.Provider value={{ authorized, setAuthorized }}>
       <Nav/>
+      <section>
       <Routes>
         <Route path='/' element={<Front/>}/>
         <Route path='question/:page_id' element={<Entries/>}/>
@@ -32,6 +33,7 @@ const App = () => {
         <Route path='ask' element={<Ask/>}/>
         <Route path='*' element={<NotFound/>}/>
       </Routes>
+      </section>
     </Context.Provider>
   );
 }
