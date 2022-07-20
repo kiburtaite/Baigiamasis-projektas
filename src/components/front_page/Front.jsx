@@ -48,7 +48,7 @@ const Front = () => {
   };
 
   return (
-    <div>
+    <div  className="mainForm">
       <div className="selector">
         <span>Rikiuoti:</span>
           <button onClick={() => setOrder(0)}>Seniausi</button>

@@ -26,7 +26,7 @@ const Entries = () => {
     }, [page_id, answers]);
 
     return (
-      <div>
+      <div className="mainForm">
         <div>
           {
             question ?

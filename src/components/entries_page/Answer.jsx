@@ -3,6 +3,7 @@ import { useParams } from 'react-router-dom';
 import { Context } from '../../App';
 import EditAnswer from './EditAnswer';
 import Ratings from './Ratings';
+import edited_logo from '../../images/edited.png';
 
 const Answer = ({ answer, setAnswers, users }) => {
 
@@ -33,7 +34,7 @@ const Answer = ({ answer, setAnswers, users }) => {
       <span>{answer.date}</span>
       <span>{user? user.username : answer.user_id}</span>
       <h4>{answer.text}</h4>
-      {answer.edited && <h6>edited</h6>}
+      {answer.edited && <img src={edited_logo} alt="edited" className="edited"/>}
       {authorized && personalPost && <button onClick={() => setShowEdit(true)}>Redaguoti atsakymą</button>}
       {authorized && personalPost && <button onClick={() => {deleteAnswer(answer.id)}}>Ištrinti atsakymą</button>}
       {showEdit && <EditAnswer answer_id={answer.id} text={answer.text}/>}

@@ -28,6 +28,7 @@ const Reply = ({ question_id, setAnswers, setShowReply }) => {
           <textarea
           name="text"
           placeholder="Atsakykite į klausimą"
+          rows="6"
           /><br />
           <input
           type="submit"

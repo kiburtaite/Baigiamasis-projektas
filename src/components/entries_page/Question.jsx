@@ -3,6 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { Context } from '../../App';
 import EditQuestion from './EditQuestion';
 import Reply from './Reply';
+import edited_logo from '../../images/edited.png';
 
 const Question = ({ question, setAnswers, users }) => {
 
@@ -32,7 +33,7 @@ const Question = ({ question, setAnswers, users }) => {
       <span>{user? user.username : question.user_id}</span>
       <h1>{question.title}</h1>
       <h3>{question.text}</h3>
-      {question.edited && <h6>edited</h6>}
+      {question.edited && <img src={edited_logo} alt="edited" className="edited"/>}
       {authorized && personalPost && <button onClick={() => setShowEdit(true)}>Redaguoti klausimą</button>}
       {authorized && personalPost && <button onClick={() => {deleteQuestion(question.id)}}>Ištrinti klausimą</button>}
       {authorized ? <button onClick={() => setShowReply(true)}>Atsakyti į klausimą</button>: null}

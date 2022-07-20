@@ -34,6 +34,7 @@ const Ask = () => {
             <textarea
             name="text"
             placeholder="Užduokite klausimą"
+            rows="6"
             /><br/>
             <input
             type="submit"

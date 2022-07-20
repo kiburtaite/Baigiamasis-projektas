@@ -26,6 +26,7 @@ const EditQuestion = ({ question_id, title, text }) => {
             <textarea
             name="text"
             defaultValue={text}
+            rows="6"
             /><br/>
             <input
             type="submit"
