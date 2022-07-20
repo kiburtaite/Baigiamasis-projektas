@@ -1,0 +1,176 @@
+{
+  "users": [
+    {
+      "id": "f349b473-ea8c-4942-af05-415c9becb64f",
+      "username": "Gabija",
+      "email": "gabija@fakemail.lt",
+      "password": "$2b$05$aHR1156RcZDeU2LPtw2pOOf5A9iWf0u9iAblzHGFrh2nV/QhKravK"
+    },
+    {
+      "id": "de047047-2d1e-4d55-b6cf-a748f3bdc936",
+      "username": "Kažkas",
+      "email": "kazkas@fakemail.lt",
+      "password": "$2b$05$uwiXAKw5BFdo/Ne/NOvO5.wQiyuK7fA4JGC7L7RUgYooDjCETgIge"
+    },
+    {
+      "id": "2ff56924-8dbe-49ee-8593-e6d9eef3df3e",
+      "username": "Katinas",
+      "email": "katinas@fakemail.lt",
+      "password": "$2b$05$jd5hTyR3ZCS7dyXGsmKo4eqw9hczhbPNcpHobaCfDw0nbjhPWLJvG"
+    },
+    {
+      "id": "c52bffa3-20bb-4999-895d-3f117a1baa65",
+      "username": "RandomUser",
+      "email": "random@fakemail.lt",
+      "password": "$2b$05$W4aaUjOnEoZdbgBEvkSAGeT0uQa1t8mGV3rdYu0PzdE8Iikprjjfi"
+    }
+  ],
+  "questions": [
+    {
+      "id": "cde9b46e-8b1b-4344-9aea-4c4f720c9e0e",
+      "date": "2022-03-05",
+      "user_id": "f349b473-ea8c-4942-af05-415c9becb64f",
+      "title": "Pirmas klausimas",
+      "text": "?",
+      "edited": false
+    },
+    {
+      "id": "6bf3bc7e-7846-4029-b803-ab52b2f11a38",
+      "date": "2022-04-15",
+      "user_id": "de047047-2d1e-4d55-b6cf-a748f3bdc936",
+      "title": "Klausimo pavyzdys nr.1",
+      "text": "Klausimas nr. 1",
+      "edited": false
+    },
+    {
+      "id": "8dff2cb7-0d18-4eae-9e7d-c8149050a9f6",
+      "date": "2022-02-28",
+      "user_id": "de047047-2d1e-4d55-b6cf-a748f3bdc936",
+      "title": "Klausimo pavyzdys nr. 2",
+      "text": "Klausimas nr. 2 (redaguotas)",
+      "edited": true
+    },
+    {
+      "id": "a7da1e65-ce8a-4bf6-b0e5-1f641a5aa8ca",
+      "date": "2022-05-05",
+      "user_id": "de047047-2d1e-4d55-b6cf-a748f3bdc936",
+      "title": "Klausimo pavyzdys nr. 3",
+      "text": "Klausimas nr. 3",
+      "edited": false
+    },
+    {
+      "id": "cd073d0f-0f84-4e54-b42a-ca66f45f4fe5",
+      "date": "2022-06-01",
+      "user_id": "2ff56924-8dbe-49ee-8593-e6d9eef3df3e",
+      "title": "Miau?",
+      "text": "miau miau?",
+      "edited": false
+    }
+  ],
+  "answers": [
+    {
+      "id": "e30c44ae-ae2b-4221-b424-dbc03f46ce2a",
+      "date": "2022-07-20",
+      "user_id": "de047047-2d1e-4d55-b6cf-a748f3bdc936",
+      "question_id": "6bf3bc7e-7846-4029-b803-ab52b2f11a38",
+      "text": "Atsakymas 1-1",
+      "edited": false
+    },
+    {
+      "id": "713456a5-f76d-4196-b558-8218e5c316ed",
+      "date": "2022-07-20",
+      "user_id": "de047047-2d1e-4d55-b6cf-a748f3bdc936",
+      "question_id": "8dff2cb7-0d18-4eae-9e7d-c8149050a9f6",
+      "text": "Atsakymas 2-1",
+      "edited": false
+    },
+    {
+      "id": "5e72bb95-c040-423d-bd6a-4db3511bf2a6",
+      "date": "2022-07-20",
+      "user_id": "de047047-2d1e-4d55-b6cf-a748f3bdc936",
+      "question_id": "a7da1e65-ce8a-4bf6-b0e5-1f641a5aa8ca",
+      "text": "Atsakymas 3-1",
+      "edited": false
+    },
+    {
+      "id": "9e7e707a-aac7-40ab-a0d6-745fd2c2f170",
+      "date": "2022-07-20",
+      "user_id": "2ff56924-8dbe-49ee-8593-e6d9eef3df3e",
+      "question_id": "8dff2cb7-0d18-4eae-9e7d-c8149050a9f6",
+      "text": "miau!",
+      "edited": false
+    },
+    {
+      "id": "cde14a1c-075a-43c0-91a4-97ba3c6351fe",
+      "date": "2022-07-20",
+      "user_id": "2ff56924-8dbe-49ee-8593-e6d9eef3df3e",
+      "question_id": "a7da1e65-ce8a-4bf6-b0e5-1f641a5aa8ca",
+      "text": "miau! miau!",
+      "edited": true
+    },
+    {
+      "id": "b563da6b-36c5-4c9d-9d1f-23267746211e",
+      "date": "2022-07-20",
+      "user_id": "c52bffa3-20bb-4999-895d-3f117a1baa65",
+      "question_id": "a7da1e65-ce8a-4bf6-b0e5-1f641a5aa8ca",
+      "text": "??????????????????????",
+      "edited": false
+    }
+  ],
+  "ratings": [
+    {
+      "id": "5cb2cf53-c5e7-4976-86bd-740c2d14fcc4",
+      "user_id": "2ff56924-8dbe-49ee-8593-e6d9eef3df3e",
+      "answer_id": "e30c44ae-ae2b-4221-b424-dbc03f46ce2a",
+      "type": "like"
+    },
+    {
+      "id": "7c47102a-e053-4d37-b00e-2ecb7eae74c5",
+      "user_id": "2ff56924-8dbe-49ee-8593-e6d9eef3df3e",
+      "answer_id": "713456a5-f76d-4196-b558-8218e5c316ed",
+      "type": "like"
+    },
+    {
+      "id": "3d99f9f1-e6c0-4f6f-a79b-c60b09a4f70a",
+      "user_id": "2ff56924-8dbe-49ee-8593-e6d9eef3df3e",
+      "answer_id": "5e72bb95-c040-423d-bd6a-4db3511bf2a6",
+      "type": "like"
+    },
+    {
+      "id": "eb0ba806-4c89-4fbd-8d63-2c99dd12b628",
+      "user_id": "c52bffa3-20bb-4999-895d-3f117a1baa65",
+      "answer_id": "b563da6b-36c5-4c9d-9d1f-23267746211e",
+      "type": "dislike"
+    },
+    {
+      "id": "815016ba-c437-4981-80aa-f920171260f3",
+      "user_id": "c52bffa3-20bb-4999-895d-3f117a1baa65",
+      "answer_id": "cde14a1c-075a-43c0-91a4-97ba3c6351fe",
+      "type": "dislike"
+    },
+    {
+      "id": "5f577119-eb77-4077-99d1-18a62d45a44f",
+      "user_id": "c52bffa3-20bb-4999-895d-3f117a1baa65",
+      "answer_id": "9e7e707a-aac7-40ab-a0d6-745fd2c2f170",
+      "type": "dislike"
+    },
+    {
+      "id": "c6d9cb8e-28ca-4ce8-8863-a41382e0c9d6",
+      "user_id": "c52bffa3-20bb-4999-895d-3f117a1baa65",
+      "answer_id": "e30c44ae-ae2b-4221-b424-dbc03f46ce2a",
+      "type": "like"
+    },
+    {
+      "id": "bec0f95e-d90e-411a-bc6f-eb87de24978b",
+      "user_id": "c52bffa3-20bb-4999-895d-3f117a1baa65",
+      "answer_id": "713456a5-f76d-4196-b558-8218e5c316ed",
+      "type": "like"
+    },
+    {
+      "id": "e778c785-6479-4c86-bb46-ef4d5c139162",
+      "user_id": "c52bffa3-20bb-4999-895d-3f117a1baa65",
+      "answer_id": "5e72bb95-c040-423d-bd6a-4db3511bf2a6",
+      "type": "like"
+    }
+  ]
+}
